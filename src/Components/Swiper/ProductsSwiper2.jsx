@@ -43,10 +43,6 @@ const slideData = [
 export default function App() {
   return (
     <>
-      <h2 className="text-white font-extrabold font-[Vazir] text-2xl ms-3 my-5 text-center">
-        محصولات تخفیفی
-        <span className="block mt-2 w-full h-1 bg-purple-600 "></span>
-      </h2>
       <Swiper
         grabCursor={true}
         centeredSlides={false}
@@ -82,8 +78,13 @@ export default function App() {
               />
 
               {/* Title */}
-              <span className="font-bold text-black text-xs md:text-sm lg:text-base bg-purple-600 w-full text-center rounded-lg py-1 shadow-lg">
+              <span className="font-bold text-black text-sm md:text-sm lg:text-base w-full text-start rounded-lg py-1 ">
                 {slide.title}
+              </span>
+
+              {/* Title */}
+              <span className="font-bold text-black text-sm md:text-sm lg:text-base bg-red-500 w-full text-center rounded-lg py-1 shadow-lg">
+                فروش ویژه:{slide.discountPercent} تخفیف
               </span>
 
               {/* Price Box */}

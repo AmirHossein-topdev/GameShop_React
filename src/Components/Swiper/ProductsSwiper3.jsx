@@ -15,19 +15,19 @@ const slideData = [
     discountPercent: "۱۳٪",
   },
   {
-    title: "بازی Marvel’s SpiderMan 2 – PS5",
-    image: "/assets/pictures/product-pic7-300x300.png",
+    title: "اکشن فیگور نینجا ترتلز",
+    image: "/assets/pictures/product-pic4.png",
     link: "/",
     price: "۲,۵۰۰,۰۰۰",
     discountPrice: "۲,۲۰۰,۰۰۰",
     discountPercent: "۱۲٪",
   },
   {
-    title: "دسته بازی Triple Black",
-    image: "/assets/pictures/product-pic8-300x300.png",
+    title: "فیگور مدل Funco Pop Twi Halk Spiderman",
+    image: "/assets/pictures/product-pic6.png",
     link: "/",
-    price: "۳,۴۰۰,۰۰۰",
-    discountPrice: "۳,۰۰۰,۰۰۰",
+    price: "۳۴۰,۰۰۰",
+    discountPrice: "۳۰۰,۰۰۰",
     discountPercent: "۱۲٪",
   },
   {
@@ -38,14 +38,21 @@ const slideData = [
     discountPrice: "۹,۰۰۰,۰۰۰",
     discountPercent: "۱۰٪",
   },
+  {
+    title: "اکشن فیگور ساکروی مدل رونالدو",
+    image: "/assets/pictures/product-pic10.png",
+    link: "/",
+    price: "۳۵۰,۰۰۰",
+    discountPrice: "۳۲۰,۰۰۰",
+    discountPercent: "۱۰٪",
+  },
 ];
 
 export default function App() {
   return (
     <>
-      <h2 className="text-white font-extrabold font-[Vazir] text-2xl ms-3 my-5 text-center">
-        محصولات تخفیفی
-        <span className="block mt-2 w-full h-1 bg-purple-600 "></span>
+      <h2 className="text-white font-extrabold font-[Vazir] text-2xl ms-3 my-5 text-start mt-10">
+        محصولات پرفروش فروشگاه !
       </h2>
       <Swiper
         grabCursor={true}
