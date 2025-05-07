@@ -43,8 +43,9 @@ const slideData = [
 export default function App() {
   return (
     <>
-      <h2 className="text-white font-extrabold font-[Vazir] text-2xl ms-3 my-5 text-start mt-10">
-        محصولات پرفروش فروشگاه !
+      <h2 className="text-white font-extrabold font-[Vazir] text-2xl my-5 text-center w-[90%] mx-auto">
+        جدید ترین مقالات فروشگاه
+        <span className="block mt-4 w-full h-1 bg-blue-600 rounded-full"></span>
       </h2>
       <Swiper
         grabCursor={true}
@@ -67,7 +68,7 @@ export default function App() {
       >
         {slideData.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="flex flex-col items-center justify-between p-3 h-86  lg:h-[26rem] w-[95%] mx-auto rounded-2xl bg-white shadow-lg border border-white/20 transition-all duration-300 hover:scale-[0.98]">
+            <div className="flex flex-col items-center justify-between p-3 h-86 lg:h-[26rem] w-[90%] mx-auto rounded-2xl bg-white shadow-lg border border-white/20 transition-all duration-300 hover:scale-[0.98]">
               {/* Image */}
               <img
                 src={slide.image}
