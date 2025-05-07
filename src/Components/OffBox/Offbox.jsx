@@ -42,7 +42,7 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 
 function Offbox() {
   return (
-    <div className="container bg-slate-700 rounded-2xl p-3 mx-auto w-[90%] mt-10">
+    <div className="container bg-slate-700 rounded-2xl p-3 pb-5 mx-auto w-[90%] my-20">
       <h3 className="text-2xl text-white font-[900] font-[Vazir] p-1 text-center">
         تخفیفات ویژه رو از دست نده !!
       </h3>

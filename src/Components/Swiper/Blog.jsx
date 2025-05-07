@@ -64,11 +64,11 @@ export default function App() {
           1024: { slidesPerView: 3 }, // دسکتاپ
           1280: { slidesPerView: 4 }, // نمایشگرهای خیلی بزرگ
         }}
-        className="mySwiper px-4"
+        className="mySwiper w-[90%] mx-auto mb-16"
       >
         {slideData.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="flex flex-col items-center justify-between p-3 h-86 lg:h-[26rem] w-[90%] mx-auto rounded-2xl bg-white shadow-lg border border-white/20 transition-all duration-300 hover:scale-[0.98]">
+            <div className="flex flex-col items-center justify-between p-3 h-86 lg:h-[22rem] mx-auto rounded-2xl bg-white shadow-lg border border-white/20 transition-all duration-300 hover:scale-[0.98]">
               {/* Image */}
               <img
                 src={slide.image}

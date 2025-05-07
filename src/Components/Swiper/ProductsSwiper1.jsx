@@ -64,11 +64,11 @@ export default function App() {
           1024: { slidesPerView: 3 }, // دسکتاپ
           1280: { slidesPerView: 4 }, // نمایشگرهای خیلی بزرگ
         }}
-        className="mySwiper px-4"
+        className="mySwiper px-4 w-[90%] mx-auto"
       >
         {slideData.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="relative flex flex-col items-center justify-between p-4 h-80 md:h-96 lg:h-[26rem] w-[90%] mx-auto rounded-2xl bg-white shadow-lg border border-white/20 transition-all duration-300 hover:scale-[0.98]">
+            <div className="relative flex flex-col items-center justify-between p-4 h-80 md:h-96 lg:h-[26rem] rounded-2xl bg-white shadow-lg border border-white/20 transition-all duration-300 hover:scale-[0.98]">
               {/* Discount Badge */}
               <div className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-lg shadow-md">
                 {slide.discountPercent} تخفیف

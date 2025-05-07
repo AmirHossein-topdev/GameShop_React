@@ -7,7 +7,7 @@ function Banner2() {
         <img
           src="/assets/pictures/banner-pic4.png"
           alt="..."
-          className="bg-transparent w-full md:h-[60vh]"
+          className="bg-transparent mx-auto md:h-[52vh] w-[90%]"
         />
       </div>
     </>
