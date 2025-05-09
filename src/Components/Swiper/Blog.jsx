@@ -68,7 +68,7 @@ export default function App() {
       >
         {slideData.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="flex flex-col items-center justify-between p-3 h-86 lg:h-[22rem] mx-auto rounded-2xl bg-white shadow-lg border border-white/20 transition-all duration-300 hover:scale-[0.98]">
+            <div className="flex flex-col items-center justify-between h-86 p-3 lg:h-[20.5rem] mx-auto rounded-2xl bg-white shadow-lg border border-white/20 transition-all duration-300 hover:scale-[0.98]">
               {/* Image */}
               <img
                 src={slide.image}
@@ -88,7 +88,7 @@ export default function App() {
               {/* Price Box */}
               <NavLink
                 to={slide.link}
-                className="flex items-center justify-between p-1 bg-white rounded-xl  w-full mt-2"
+                className="flex items-center justify-between bg-white rounded-xl  w-full mt-2"
               >
                 <div className="w-2/3 text-right text-black font-semibold text-xs md:text-sm lg:text-base">
                   <span className="line-through text-gray-500 block">

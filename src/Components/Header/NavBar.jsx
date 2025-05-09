@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { IoCloseCircle } from "react-icons/io5";
 import { RiSearch2Fill } from "react-icons/ri";
@@ -6,6 +6,15 @@ import { NavLink } from "react-router-dom";
 
 function NavBar() {
   const [menu, setMenu] = useState(false);
+  const [score, setScore] = useState(0);
+
+  useEffect(() => {
+    // گرفتن امتیاز از  localStorage
+    const storedScore = localStorage.getItem("score");
+    if (storedScore) {
+      setScore(storedScore);
+    }
+  }, []);
 
   return (
     <>
@@ -64,6 +73,7 @@ function NavBar() {
             { to: "/contact-us", label: "تماس باما" },
             { to: "/about-us", label: "درباره ما" },
             { to: "/game-order", label: "سفارش بازی" },
+            { to: "/---", label: `امتیاز شما: ${score}` }, // نمایش امتیاز
           ].map((item, idx) => (
             <NavLink
               key={idx}

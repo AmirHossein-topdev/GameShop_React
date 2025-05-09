@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaUser } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import { FaBasketShopping } from "react-icons/fa6";
@@ -6,6 +6,15 @@ import NavBar from "./NavBar";
 
 function Header() {
   const [menu, setmenu] = useState(false);
+  const [score, setScore] = useState(0);
+
+  useEffect(() => {
+    // گرفتن امتیاز از  localStorage
+    const storedScore = localStorage.getItem("score");
+    if (storedScore) {
+      setScore(storedScore);
+    }
+  }, []);
   return (
     <>
       <header>
@@ -21,6 +30,7 @@ function Header() {
               { to: "/contact-us", label: "تماس باما" },
               { to: "/about-us", label: "درباره ما" },
               { to: "/game-order", label: "سفارش بازی" },
+              { to: "/---", label: `امتیاز شما: ${score}` }, // نمایش امتیاز
             ].map((item, idx) => (
               <NavLink
                 key={idx}

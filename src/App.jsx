@@ -10,6 +10,7 @@ import Banner1 from "./Components/Banner/Banner1";
 import Banner2 from "./Components/Banner/Banner2";
 import Banner3 from "./Components/Banner/Banner3";
 import Offbox from "./Components/OffBox/Offbox";
+import SnakeGame from "./Components/Game/Snake";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
       <ProductSwiper3 />
       <Banner3 />
       <Blog />
-
+      <SnakeGame />
       <Footer />
     </BrowserRouter>
   );
