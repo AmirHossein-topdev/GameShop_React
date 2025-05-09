@@ -204,29 +204,33 @@ const SnakeGame = () => {
     let touchStartY = 0;
 
     const handleTouchStart = (e) => {
+      if (e.cancelable) e.preventDefault(); // جلوگیری از اسکرول
       const touch = e.touches[0];
       touchStartX = touch.clientX;
       touchStartY = touch.clientY;
     };
 
     const handleTouchEnd = (e) => {
+      if (e.cancelable) e.preventDefault(); // جلوگیری از pull-to-refresh
       const touch = e.changedTouches[0];
       const deltaX = touch.clientX - touchStartX;
       const deltaY = touch.clientY - touchStartY;
 
       if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        if (deltaX > 30 && dir.x === 0) setDir({ x: 1, y: 0 }); // راست
-        if (deltaX < -30 && dir.x === 0) setDir({ x: -1, y: 0 }); // چپ
+        if (deltaX > 30 && dir.x === 0) setDir({ x: 1, y: 0 });
+        if (deltaX < -30 && dir.x === 0) setDir({ x: -1, y: 0 });
       } else {
-        if (deltaY > 30 && dir.y === 0) setDir({ x: 0, y: 1 }); // پایین
-        if (deltaY < -30 && dir.y === 0) setDir({ x: 0, y: -1 }); // بالا
+        if (deltaY > 30 && dir.y === 0) setDir({ x: 0, y: 1 });
+        if (deltaY < -30 && dir.y === 0) setDir({ x: 0, y: -1 });
       }
     };
 
     const gameArea = document.getElementById("snake-game-area");
     if (gameArea) {
-      gameArea.addEventListener("touchstart", handleTouchStart);
-      gameArea.addEventListener("touchend", handleTouchEnd);
+      gameArea.addEventListener("touchstart", handleTouchStart, {
+        passive: false,
+      });
+      gameArea.addEventListener("touchend", handleTouchEnd, { passive: false });
     }
 
     return () => {
