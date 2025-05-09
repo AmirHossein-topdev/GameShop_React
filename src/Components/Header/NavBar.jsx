@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { IoCloseCircle } from "react-icons/io5";
 import { RiSearch2Fill } from "react-icons/ri";
@@ -8,12 +8,29 @@ function NavBar() {
   const [menu, setMenu] = useState(false);
   const [score, setScore] = useState(0);
 
+  const menuRef = useRef(null); // مرجع به منو
+
   useEffect(() => {
-    // گرفتن امتیاز از  localStorage
+    // گرفتن امتیاز از localStorage
     const storedScore = localStorage.getItem("score");
     if (storedScore) {
       setScore(storedScore);
     }
+
+    // تابع برای بستن منو زمانی که کلیک خارج از آن می‌شود
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenu(false); // بستن منو اگر کلیک خارج از آن باشد
+      }
+    };
+
+    // افزودن event listener به document
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // پاک کردن event listener هنگام unmount
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   return (
@@ -22,17 +39,24 @@ function NavBar() {
       <nav className="container sm:hidden cursor-pointer">
         <FaBarsStaggered
           className="text-2xl text-gray-700"
-          onClick={() => setMenu(true)}
+          onClick={() => setMenu(true)} // باز کردن منو
           aria-label="باز کردن منو"
         />
       </nav>
 
       {/* منو موبایل */}
+      {menu && (
+        <div
+          className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm"
+          onClick={() => setMenu(false)}
+        ></div>
+      )}
       <div
+        ref={menuRef} // اعمال مرجع به منو
         className={`fixed top-0 h-full w-3/5 bg-white rounded-e-md z-50 shadow-xl
         transition-transform duration-700 ease-in-out
         ${menu ? "right-[0%]" : "translate-x-[100vw]"}
-      `}
+        backdrop-blur-3xl`} // اضافه کردن blur پس زمینه
       >
         {/* هدر منو */}
         <div className="flex justify-between items-center p-4 border-b">
@@ -48,7 +72,7 @@ function NavBar() {
           </div>
           <IoCloseCircle
             className="text-red-800 text-3xl cursor-pointer"
-            onClick={() => setMenu(false)}
+            onClick={() => setMenu(false)} // بستن منو با کلیک روی دکمه بستن
             aria-label="بستن منو"
           />
         </div>

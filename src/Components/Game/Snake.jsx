@@ -90,7 +90,6 @@ const SnakeGame = () => {
   }, [gameOver, score]);
 
   useEffect(() => {
-    // Shake the button every 3 seconds if it's visible
     if (showButton) {
       const shakeInterval = setInterval(() => {
         setShake((prev) => !prev);
@@ -198,10 +197,53 @@ const SnakeGame = () => {
     setRunning(true);
   };
 
+  //   {"کنترل لمسی"}
+
+  useEffect(() => {
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    const handleTouchStart = (e) => {
+      const touch = e.touches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+    };
+
+    const handleTouchEnd = (e) => {
+      const touch = e.changedTouches[0];
+      const deltaX = touch.clientX - touchStartX;
+      const deltaY = touch.clientY - touchStartY;
+
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX > 30 && dir.x === 0) setDir({ x: 1, y: 0 }); // راست
+        if (deltaX < -30 && dir.x === 0) setDir({ x: -1, y: 0 }); // چپ
+      } else {
+        if (deltaY > 30 && dir.y === 0) setDir({ x: 0, y: 1 }); // پایین
+        if (deltaY < -30 && dir.y === 0) setDir({ x: 0, y: -1 }); // بالا
+      }
+    };
+
+    const gameArea = document.getElementById("snake-game-area");
+    if (gameArea) {
+      gameArea.addEventListener("touchstart", handleTouchStart);
+      gameArea.addEventListener("touchend", handleTouchEnd);
+    }
+
+    return () => {
+      if (gameArea) {
+        gameArea.removeEventListener("touchstart", handleTouchStart);
+        gameArea.removeEventListener("touchend", handleTouchEnd);
+      }
+    };
+  }, [dir]);
+
   return (
     <div className="flex flex-col items-center">
       {showModal && (
-        <div className="fixed inset-0 backdrop-blur-lg bg-black/50 flex items-center justify-center z-50">
+        <div
+          id="snake-game-area"
+          className="fixed inset-0 backdrop-blur-lg bg-black/50 flex items-center justify-center z-50"
+        >
           <div className="bg-slate-800 p-6 rounded-xl shadow-2xl border border-cyan-500 flex flex-col items-center space-y-4 relative">
             <button
               onClick={() => {
