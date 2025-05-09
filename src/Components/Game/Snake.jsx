@@ -281,12 +281,6 @@ const SnakeGame = () => {
           </div>
         </div>
       )}
-      {/* متن راهنمایی */}
-      {showButton && (
-        <div className="text-center text-xl text-white mb-4">
-          <p>برای شروع بازی، روی دکمه زیر کلیک کن!</p>
-        </div>
-      )}
 
       {/* New button for game */}
       {showButton && (
